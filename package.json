@@ -1,0 +1,37 @@
+{
+  "name": "eosio-graphql",
+  "version": "0.1.0",
+  "description": "EOSIO GraphQL API",
+  "main": "index.js",
+  "scripts": {
+    "test": "tslint --project .",
+    "start": "tsc && node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EOS-Nation/eosio-graphql.git"
+  },
+  "keywords": [
+    "eosio",
+    "graphql",
+    "eos"
+  ],
+  "author": "Denis Carriere <denis@eosnation.io>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/EOS-Nation/eosio-graphql/issues"
+  },
+  "homepage": "https://github.com/EOS-Nation/eosio-graphql#readme",
+  "dependencies": {
+    "apollo-server": "*",
+    "eosio-mongodb-queries": "*",
+    "graphql": "*",
+    "mongodb": "*"
+  },
+  "devDependencies": {
+    "@types/graphql": "*",
+    "@types/mongodb": "*",
+    "tslint": "*",
+    "typescript": "*"
+  }
+}
