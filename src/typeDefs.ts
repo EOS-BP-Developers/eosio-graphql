@@ -1,7 +1,7 @@
 import { gql } from "apollo-server";
 
 const eosio = `
-# eosio account
+
 type Account {
     name: String!
     block_num: Int!
@@ -10,13 +10,16 @@ type Account {
     stake_cpu_quantity: Float!
 }
 
-type Query {
-    # eosio
+type Eosio {
     account(
         name: String!,
         lte_block_num: Int,
         gte_block_num: Int,
     ): Account
+}
+
+type Query {
+    eosio: Eosio
 }
 `;
 
@@ -45,7 +48,7 @@ const action = `
     authorization: [Authorization]
 `;
 
-const eosioForum = `
+const eosforumtest = `
 type PostData {
     account: String!
     post_uuid: String!
@@ -57,14 +60,22 @@ type PostData {
     json_metadata: String
 }
 
-# eosio.forum post
+type UnpostData {
+    poster: String!
+    post_uuid: String!
+}
+
 type Post {
     ${action}
     data: PostData!
 }
 
-extend type Query {
-    # eosio.forum
+type Unpost {
+    ${action}
+    data: UnpostData!
+}
+
+type Eosforumtest {
     posts(
         post_uuid: String,
         account: String,
@@ -74,6 +85,16 @@ extend type Query {
         reply_to_post_uuid: String,
         ${actionQuery}
     ): [Post]
+
+    unposts(
+        poster: String,
+        post_uuid: String,
+        ${actionQuery}
+    ): [Unpost]
+}
+
+extend type Query {
+    eosforumtest: Eosforumtest
 }
 `;
 
@@ -84,5 +105,5 @@ export const typeDefs = gql`
     }
     ${authorization}
     ${eosio}
-    ${eosioForum}
+    ${eosforumtest}
 `;
