@@ -24,6 +24,10 @@ $ npm start
 
 ## Examples
 
+Explore the query data schema by expanding the `schema` tab.
+
+![image](https://user-images.githubusercontent.com/550895/43240455-93620602-9064-11e8-8eaa-60e5e6baa342.png)
+
 Query an account by `name` & `block_num` to get the exact `stake_quanity` at that given referen block number.
 
 ```gql
