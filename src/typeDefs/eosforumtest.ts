@@ -1,53 +1,6 @@
-import { gql } from "apollo-server";
+import { action, actionQuery } from "./templates";
 
-const eosio = `
-
-type Account {
-    name: String!
-    block_num: Int!
-    stake_quantity: Float!
-    stake_net_quantity: Float!
-    stake_cpu_quantity: Float!
-}
-
-type Eosio {
-    account(
-        name: String!,
-        block_num: Int,
-    ): Account
-}
-
-type Query {
-    eosio: Eosio
-}
-`;
-
-const actionQuery = `
-    trx_id: String,
-    block_num: Int,
-    block_id: String,
-    lte_block_num: Int,
-    gte_block_num: Int,
-    skip: Int,
-    limit: Int,
-`;
-
-const authorization = `
-type Authorization {
-    actor: String
-    permission: String
-}`;
-
-const action = `
-    trx_id: String!
-    block_num: Int!
-    block_id: String!
-    account: String!
-    name: String!
-    authorization: [Authorization]
-`;
-
-const eosforumtest = `
+export const eosforumtest = `
 type PostData {
     account: String!
     post_uuid: String!
@@ -115,14 +68,4 @@ type Eosforumtest {
 extend type Query {
     eosforumtest: Eosforumtest
 }
-`;
-
-// The GraphQL schema in string form
-export const typeDefs = gql`
-    schema {
-        query: Query
-    }
-    ${authorization}
-    ${eosio}
-    ${eosforumtest}
 `;

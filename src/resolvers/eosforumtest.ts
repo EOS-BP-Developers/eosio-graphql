@@ -1,21 +1,7 @@
-import { MongoClient } from "mongodb";
-import { getAccount, getActions } from "eosio-mongodb-queries";
+import { client } from "./mongodb";
+import { getActions } from "eosio-mongodb-queries";
 
-let client: MongoClient | null = null;
-
-const eosio = {
-    account: async (options: {
-        name: string,
-        block_num?: number,
-    }) => {
-        if (!client) { throw new Error("MongoClient is not initialized"); }
-
-        const result = await getAccount(client, options.name, options);
-        return result;
-    },
-};
-
-const eosforumtest = {
+export const eosforumtest = {
     post: async (options: {
         post_uuid?: string,
         account?: string,
@@ -131,18 +117,3 @@ const eosforumtest = {
         return await result.toArray();
     },
 };
-
-// The resolvers
-export const resolvers: any = {
-    Query: {
-        eosio: () => eosio,
-        eosforumtest: () => eosforumtest,
-    },
-};
-
-// Intialize MongoDB Client
-(async () => {
-    if (!client) {
-        client = await MongoClient.connect("mongodb://localhost:27017", { useNewUrlParser: true });
-    }
-})();
