@@ -6,8 +6,7 @@ let client: MongoClient | null = null;
 const eosio = {
     account: async (options: {
         name: string,
-        lte_block_num?: number,
-        gte_block_num?: number,
+        block_num?: number,
     }) => {
         if (!client) { throw new Error("MongoClient is not initialized"); }
 
@@ -17,7 +16,7 @@ const eosio = {
 };
 
 const eosforumtest = {
-    posts: async (options: {
+    post: async (options: {
         post_uuid?: string,
         account?: string,
         title?: string,
@@ -59,7 +58,7 @@ const eosforumtest = {
         }));
         return await result.toArray();
     },
-    unposts: async (_: any, options: {
+    unpost: async (options: {
         poster?: string,
         post_uuid?: string,
 
@@ -83,6 +82,44 @@ const eosforumtest = {
         const data = [];
         if (options.poster) { data.push({"data.poster": options.poster }); }
         if (options.post_uuid) { data.push({"data.post_uuid": options.post_uuid }); }
+
+        // Get Actions
+        const result = await getActions(client, Object.assign(options, {
+            accounts,
+            names,
+            data,
+            limit,
+        }));
+        return await result.toArray();
+    },
+    vote: async (options: {
+        voter?: string,
+        proposition?: string,
+        proposition_hash?: string,
+        vote_value?: string,
+
+        // Standard Filters
+        skip?: number,
+        limit?: number,
+        trx_id?: string,
+        block_num?: number,
+        block_id?: string,
+        lte_block_num?: number,
+        gte_block_num?: number,
+    } = {}) => {
+        if (!client) { throw new Error("MongoClient is not initialized"); }
+
+        // Default Parameters
+        const accounts = ["eosforumtest"];
+        const names = ["vote"];
+        const limit = options.limit || 25; // default 25
+
+        // Optional Data Filters
+        const data = [];
+        if (options.voter) { data.push({"data.voter": options.voter }); }
+        if (options.proposition) { data.push({"data.proposition": options.proposition }); }
+        if (options.proposition_hash) { data.push({"data.proposition_hash": options.proposition_hash }); }
+        if (options.vote_value) { data.push({"data.vote_value": options.vote_value }); }
 
         // Get Actions
         const result = await getActions(client, Object.assign(options, {

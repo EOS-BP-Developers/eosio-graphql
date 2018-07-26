@@ -13,8 +13,7 @@ type Account {
 type Eosio {
     account(
         name: String!,
-        lte_block_num: Int,
-        gte_block_num: Int,
+        block_num: Int,
     ): Account
 }
 
@@ -65,6 +64,13 @@ type UnpostData {
     post_uuid: String!
 }
 
+type VoteData {
+    voter: String!
+    proposition: String!
+    proposition_hash: String
+    vote_value: String!
+}
+
 type Post {
     ${action}
     data: PostData!
@@ -75,8 +81,13 @@ type Unpost {
     data: UnpostData!
 }
 
+type Vote {
+    ${action}
+    data: VoteData!
+}
+
 type Eosforumtest {
-    posts(
+    post(
         post_uuid: String,
         account: String,
         title: String,
@@ -86,11 +97,19 @@ type Eosforumtest {
         ${actionQuery}
     ): [Post]
 
-    unposts(
+    unpost(
         poster: String,
         post_uuid: String,
         ${actionQuery}
     ): [Unpost]
+
+    vote(
+        voter: String,
+        proposition: String,
+        proposition_hash: String,
+        vote_value: String,
+        ${actionQuery}
+    ): [Vote]
 }
 
 extend type Query {

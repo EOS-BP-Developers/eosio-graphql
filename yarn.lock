@@ -512,8 +512,8 @@ encodeurl@~1.0.2:
   resolved "https://registry.yarnpkg.com/encodeurl/-/encodeurl-1.0.2.tgz#ad3ff4c86ec2d029322f5a02c3a9a606c95b3f59"
 
 eosio-mongodb-queries@*:
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/eosio-mongodb-queries/-/eosio-mongodb-queries-0.3.1.tgz#0d2f92d95cc831a7d489cfe907eaa6efbed8bf80"
+  version "0.3.3"
+  resolved "https://registry.yarnpkg.com/eosio-mongodb-queries/-/eosio-mongodb-queries-0.3.3.tgz#79fd39b7cc09da7081411aff5ecd9b769452d5d8"
 
 es-abstract@^1.5.1:
   version "1.12.0"
