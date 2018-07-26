@@ -1,6 +1,7 @@
 import { gql } from "apollo-server";
 import { eosio } from "./eosio";
 import { eosforumdapp } from "./eosforumdapp";
+import { eosforumtest } from "./eosforumtest";
 import { authorization } from "./templates";
 
 // The GraphQL schema in string form
@@ -17,4 +18,5 @@ export const typeDefs = gql`
     ${authorization}
     ${eosio}
     ${eosforumdapp}
+    ${eosforumtest}
 `;

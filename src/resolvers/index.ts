@@ -2,6 +2,7 @@ import * as fs from "fs";
 import * as path from "path";
 import { eosio } from "./eosio";
 import { eosforumdapp } from "./eosforumdapp";
+import { eosforumtest } from "./eosforumtest";
 
 // Parse package.json
 const pckg = JSON.parse(fs.readFileSync(path.join(__dirname, "..", "..", "package.json"), "utf8"));
@@ -19,5 +20,6 @@ export const resolvers: any = {
         // Smart Contracts
         eosio: () => eosio,
         eosforumdapp: () => eosforumdapp,
+        eosforumtest: () => eosforumtest,
     },
 };

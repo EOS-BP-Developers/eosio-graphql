@@ -1,7 +1,7 @@
 import { action, actionQuery } from "./templates";
 
-export const eosforumdapp = `
-type PostData {
+export const eosforumtest = `
+type PostData2 {
     poster: String
     post_uuid: String
     content: String
@@ -11,41 +11,41 @@ type PostData {
     json_metadata: String
 }
 
-type ProposeData {
+type ProposeData2 {
     proposer: String
     proposal_name: String
     title: String
     proposal_json: String
 }
 
-type UnproposeData {
+type UnproposeData2 {
     proposer: String
     proposal_name: String
 }
 
-type ProposalData {
+type ProposalData2 {
     proposal_name: String
     title: String
     proposal_json: String
 }
 
-type UnpostData {
+type UnpostData2 {
     poster: String
     post_uuid: String
 }
 
-type StatusData {
+type StatusData2 {
     account: String
     content: String
 }
 
-type StatusrowData {
+type StatusrowData2 {
     account: String
     content: String
     updated_at: String
 }
 
-type VoteData {
+type VoteData2 {
     voter: String
     proposer: String
     proposal_name: String
@@ -54,37 +54,37 @@ type VoteData {
     vote_json: String
 }
 
-type Post {
+type Post2 {
     ${action}
-    data: PostData!
+    data: PostData2!
 }
 
-type Unpost {
+type Unpost2 {
     ${action}
-    data: UnpostData!
+    data: UnpostData2!
 }
 
-type Propose {
+type Propose2 {
     ${action}
-    data: ProposeData!
+    data: ProposeData2!
 }
 
-type Unpropose {
+type Unpropose2 {
     ${action}
-    data: UnproposeData!
+    data: UnproposeData2!
 }
 
-type Vote {
+type Vote2 {
     ${action}
-    data: VoteData!
+    data: VoteData2!
 }
 
-type Status {
+type Status2 {
     ${action}
-    data: StatusData!
+    data: StatusData2!
 }
 
-type Eosforumdapp {
+type Eosforumtest {
     post(
         poster: String,
         post_uuid: String,
@@ -92,25 +92,25 @@ type Eosforumdapp {
         reply_to_poster: String,
         reply_to_post_uuid: String,
         ${actionQuery}
-    ): [Post]
+    ): [Post2]
 
     unpost(
         poster: String,
         post_uuid: String,
         ${actionQuery}
-    ): [Unpost]
+    ): [Unpost2]
 
     propose(
         proposal_name: String,
         title: String,
         ${actionQuery}
-    ): [Propose]
+    ): [Propose2]
 
     unpropose(
         proposer: String,
         proposal_name: String,
         ${actionQuery}
-    ): [Propose]
+    ): [Propose2]
 
     vote(
         voter: String,
@@ -118,16 +118,10 @@ type Eosforumdapp {
         proposition_hash: String,
         vote_value: String,
         ${actionQuery}
-    ): [Vote]
-
-    status(
-        account: String,
-        content: String,
-        ${actionQuery}
-    ): [Vote]
+    ): [Vote2]
 }
 
 extend type Query {
-    eosforumdapp: Eosforumdapp
+    eosforumtest: Eosforumtest
 }
 `;
