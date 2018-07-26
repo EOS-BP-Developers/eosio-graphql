@@ -22,7 +22,11 @@ $ npm start
 🚀 Server ready at http://localhost:4000/graphql
 ```
 
-### GraphQL schema
+## GraphQL examples
+
+- [`eosio` account](#eosio-account)
+- [`eosio.forum` post](#eosioforum-post)
+- [`eosio.forum` vote](#eosioforum-vote)
 
 Explore & learn the query data schema by expanding the `schema` tab.
 
