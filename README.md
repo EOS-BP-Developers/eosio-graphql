@@ -22,11 +22,13 @@ $ npm start
 🚀 Server ready at http://localhost:4000/graphql
 ```
 
-## Examples
+### GraphQL schema
 
-Explore the query data schema by expanding the `schema` tab.
+Explore & learn the query data schema by expanding the `schema` tab.
 
 ![image](https://user-images.githubusercontent.com/550895/43240455-93620602-9064-11e8-8eaa-60e5e6baa342.png)
+
+### `eosio` account
 
 Query an account by `name` & `block_num` to get the exact `stake_quanity` at that given referen block number.
 
@@ -45,6 +47,8 @@ query {
 ```
 
 ![image](https://user-images.githubusercontent.com/550895/43240376-34ddee70-9064-11e8-83a3-8ebf6129933e.png)
+
+### `eosio.forum` post
 
 Query all posts based on an exact `title` match.
 
@@ -65,6 +69,8 @@ query {
 ```
 
 ![image](https://user-images.githubusercontent.com/550895/43240254-926f5ea8-9063-11e8-8e02-5348424e1c86.png)
+
+### `eosio.forum` vote
 
 Query all votes based on a particular `proposition`.
 
