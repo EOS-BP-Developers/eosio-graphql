@@ -31,3 +31,8 @@ Query an account by `block_num` to get the exact `stake_quanity` at that given r
 Query all posts based on an exact `title` match.
 
 ![image](https://user-images.githubusercontent.com/550895/43239961-50c16042-9062-11e8-8440-70c410ccbcf4.png)
+
+Query all votes based on a particular `proposition`.
+
+![image](https://user-images.githubusercontent.com/550895/43240076-d816f6c4-9062-11e8-859a-29671c55cb3c.png)
+
