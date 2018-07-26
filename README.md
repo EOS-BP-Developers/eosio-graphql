@@ -1,14 +1,14 @@
 # EOSIO GraphQL API
 
-[![Build Status](https://travis-ci.org/EOS-Nation/eosio-graphql.svg?branch=master)](https://travis-ci.org/EOS-Nation/eosio-graphql)
-[![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/EOS-Nation/eosio-graphql/master/LICENSE)
+[![Build Status](https://travis-ci.org/EOS-BP-Developers/eosio-graphql.svg?branch=master)](https://travis-ci.org/EOS-BP-Developers/eosio-graphql)
+[![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/EOS-BP-Developers/eosio-graphql/master/LICENSE)
 
 Deploy a GraphQL API + MongoDB for the EOSIO blockchain.
 
 ## Install
 
 ```bash
-$ git clone https://github.com/EOS-Nation/eosio-graphql.git
+$ git clone https://github.com/EOS-BP-Developers/eosio-graphql.git
 $ cd eosio-graphql
 $ npm install
 ```
