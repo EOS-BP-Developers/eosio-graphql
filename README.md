@@ -22,4 +22,12 @@ $ npm start
 🚀 Server ready at http://localhost:4000/graphql
 ```
 
-![demo](https://user-images.githubusercontent.com/550895/43098978-b495347a-8e8e-11e8-9876-1c650a792acc.png)
+## Examples
+
+Query an account by `block_num` to get the exact `stake_quanity` at that given referen block number.
+
+![demo](https://user-images.githubusercontent.com/550895/43239894-ff5601ea-9061-11e8-93c3-69c2202e1bba.png)
+
+Query all posts based on an exact `title` match.
+
+![image](https://user-images.githubusercontent.com/550895/43239961-50c16042-9062-11e8-8440-70c410ccbcf4.png)
