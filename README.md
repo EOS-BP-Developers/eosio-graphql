@@ -24,15 +24,60 @@ $ npm start
 
 ## Examples
 
-Query an account by `block_num` to get the exact `stake_quanity` at that given referen block number.
+Query an account by `name` & `block_num` to get the exact `stake_quanity` at that given referen block number.
 
-![demo](https://user-images.githubusercontent.com/550895/43239894-ff5601ea-9061-11e8-93c3-69c2202e1bba.png)
+```gql
+query {
+  eosio {
+    account(name:"eosnationftw", block_num:6000000) {
+      name
+      block_num
+      stake_quantity
+      stake_net_quantity
+      stake_cpu_quantity
+    }
+  }
+}
+```
+
+![image](https://user-images.githubusercontent.com/550895/43240376-34ddee70-9064-11e8-83a3-8ebf6129933e.png)
 
 Query all posts based on an exact `title` match.
 
-![image](https://user-images.githubusercontent.com/550895/43239961-50c16042-9062-11e8-8440-70c410ccbcf4.png)
+```gql
+query {
+  eosforumtest {
+    post(title: "SYSTEM_UPGRADE") {
+      block_num
+      data {
+        account
+        post_uuid
+        title
+        content
+      }
+    }
+  }
+}
+```
+
+![image](https://user-images.githubusercontent.com/550895/43240254-926f5ea8-9063-11e8-8e02-5348424e1c86.png)
 
 Query all votes based on a particular `proposition`.
 
-![image](https://user-images.githubusercontent.com/550895/43240076-d816f6c4-9062-11e8-859a-29671c55cb3c.png)
+```gql
+query {
+  eosforumtest {
+    vote(proposition: "http://ballista/eosconstitution.io/public/proposals/4/articles/61#comment-1") {
+      block_num
+      data {
+        voter
+        proposition
+        proposition_hash
+        vote_value
+      }
+    }
+  }
+}
+```
 
+![image](https://user-images.githubusercontent.com/550895/43240281-abc32128-9063-11e8-8d57-a73f1fd71a86.png)
