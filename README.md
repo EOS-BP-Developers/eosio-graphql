@@ -5,8 +5,6 @@
 
 Deploy a GraphQL API + MongoDB for the EOSIO blockchain.
 
-> Vote for [EOS Nation](https://eosnation.io) (eosnationftw) to help build more awesome tools for the EOS community.
-
 ## Install
 
 ```bash
@@ -95,3 +93,11 @@ query {
 ```
 
 ![image](https://user-images.githubusercontent.com/550895/43240281-abc32128-9063-11e8-8d57-a73f1fd71a86.png)
+
+## Contributors
+
+This is made with ♥ by:
+
+- [EOS Nation](https://eosnation.io) (`eosnationftw`)
+
+> Voting on the EOSIO mainnet helps build more awesome tools for the EOS community.
