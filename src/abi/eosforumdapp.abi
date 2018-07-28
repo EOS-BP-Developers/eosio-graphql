@@ -1,0 +1,188 @@
+{
+  "version": "",
+  "types": [{
+      "new_type_name": "account_name",
+      "type": "name"
+    }
+  ],
+  "structs": [{
+      "name": "post",
+      "base": "",
+      "fields": [{
+          "name": "poster",
+          "type": "account_name"
+        },{
+          "name": "post_uuid",
+          "type": "string"
+        },{
+          "name": "content",
+          "type": "string"
+        },{
+          "name": "reply_to_poster",
+          "type": "account_name"
+        },{
+          "name": "reply_to_post_uuid",
+          "type": "string"
+        },{
+          "name": "certify",
+          "type": "bool"
+        },{
+          "name": "json_metadata",
+          "type": "string"
+        }
+      ]
+    },{
+      "name": "propose",
+      "base": "",
+      "fields": [{
+          "name": "proposer",
+          "type": "account_name"
+        },{
+          "name": "proposal_name",
+          "type": "name"
+        },{
+          "name": "title",
+          "type": "string"
+        },{
+          "name": "proposal_json",
+          "type": "string"
+        }
+      ]
+    },{
+      "name": "unpropose",
+      "base": "",
+      "fields": [{
+          "name": "proposer",
+          "type": "account_name"
+        },{
+          "name": "proposal_name",
+          "type": "name"
+        }
+      ]
+    },{
+      "name": "proposal",
+      "base": "",
+      "fields": [{
+          "name": "proposal_name",
+          "type": "name"
+        },{
+          "name": "title",
+          "type": "string"
+        },{
+          "name": "proposal_json",
+          "type": "string"
+        }
+      ]
+    },{
+      "name": "unpost",
+      "base": "",
+      "fields": [{
+          "name": "poster",
+          "type": "account_name"
+        },{
+          "name": "post_uuid",
+          "type": "string"
+        }
+      ]
+    },{
+      "name": "status",
+      "base": "",
+      "fields": [{
+          "name": "account",
+          "type": "account_name"
+        },{
+          "name": "content",
+          "type": "string"
+        }
+      ]
+    },{
+      "name": "statusrow",
+      "base": "",
+      "fields": [{
+          "name": "account",
+          "type": "account_name"
+        },{
+          "name": "content",
+          "type": "string"
+        },{
+          "name": "updated_at",
+          "type": "time_point_sec"
+        }
+      ]
+    },{
+      "name": "vote",
+      "base": "",
+      "fields": [{
+          "name": "voter",
+          "type": "account_name"
+        },{
+          "name": "proposer",
+          "type": "account_name"
+        },{
+          "name": "proposal_name",
+          "type": "name"
+        },{
+          "name": "proposal_hash",
+          "type": "string"
+        },{
+          "name": "vote",
+          "type": "bool"
+        },{
+          "name": "vote_json",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "actions": [{
+      "name": "post",
+      "type": "post",
+      "ricardian_contract": ""
+    },{
+      "name": "unpost",
+      "type": "unpost",
+      "ricardian_contract": ""
+    },{
+      "name": "propose",
+      "type": "propose",
+      "ricardian_contract": ""
+    },{
+      "name": "unpropose",
+      "type": "unpropose",
+      "ricardian_contract": ""
+    },{
+      "name": "vote",
+      "type": "vote",
+      "ricardian_contract": ""
+    },{
+      "name": "status",
+      "type": "status",
+      "ricardian_contract": ""
+    }
+  ],
+  "tables": [{
+      "name": "proposal",
+      "index_type": "i64",
+      "key_names": [
+        "proposal_name"
+      ],
+      "key_types": [
+        "name"
+      ],
+      "type": "proposal"
+    },{
+      "name": "status",
+      "index_type": "i64",
+      "key_names": [
+        "account"
+      ],
+      "key_types": [
+        "name"
+      ],
+      "type": "statusrow"
+    }
+  ],
+  "ricardian_clauses": [],
+  "error_messages": [],
+  "abi_extensions": []
+}

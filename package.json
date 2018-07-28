@@ -28,10 +28,12 @@
   "dependencies": {
     "apollo-server": "*",
     "eosio-mongodb-queries": "*",
+    "glob": "^7.1.2",
     "graphql": "*",
     "mongodb": "*"
   },
   "devDependencies": {
+    "@types/glob": "^5.0.35",
     "@types/graphql": "*",
     "@types/mongodb": "*",
     "tslint": "*",

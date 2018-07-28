@@ -1,0 +1,57 @@
+{
+  "version": "eosio::abi/1.0",
+  "types": [],
+  "structs": [{
+      "name": "post",
+      "base": "",
+      "fields": [{
+          "name": "account",
+          "type": "name"
+        },{
+          "name": "title",
+          "type": "string"
+        },{
+          "name": "content",
+          "type": "string"
+        },{
+          "name": "reply_to_tx",
+          "type": "string"
+        },{
+          "name": "json_meta",
+          "type": "string"
+        }
+      ]
+    },{
+      "name": "vote",
+      "base": "",
+      "fields": [{
+          "name": "voter",
+          "type": "name"
+        },{
+          "name": "tx",
+          "type": "string"
+        },{
+          "name": "vote_value",
+          "type": "string"
+        },{
+          "name": "json_meta",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "actions": [{
+      "name": "post",
+      "type": "post",
+      "ricardian_contract": ""
+    },{
+      "name": "vote",
+      "type": "vote",
+      "ricardian_contract": ""
+    }
+  ],
+  "tables": [],
+  "ricardian_clauses": [],
+  "error_messages": [],
+  "abi_extensions": []
+}

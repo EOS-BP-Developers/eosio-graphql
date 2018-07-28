@@ -1,14 +1,17 @@
 import { gql } from "apollo-server";
-import { eosio } from "./eosio";
-import { eosforumdapp } from "./eosforumdapp";
-import { eosforumtest } from "./eosforumtest";
 import { authorization } from "./templates";
+import { abiActions, abiQueries, abiTypeDefs } from "./abi";
 
 // The GraphQL schema in string form
 export const typeDefs = gql`
     schema {
         query: Query
     }
+
+    ${abiActions}
+    ${abiTypeDefs}
+    ${authorization}
+
     type Query {
         name: String
         version: String
@@ -16,9 +19,6 @@ export const typeDefs = gql`
         author: String
         homepage: String
         contributors: [String]
+        ${abiQueries}
     }
-    ${authorization}
-    ${eosio}
-    ${eosforumdapp}
-    ${eosforumtest}
 `;

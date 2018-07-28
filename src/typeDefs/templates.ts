@@ -1,4 +1,4 @@
-export const actionQuery = `
+export const templateActionQuery = `
     trx_id: String,
     block_num: Int,
     block_id: String,
@@ -14,7 +14,7 @@ type Authorization {
     permission: String
 }`;
 
-export const action = `
+export const templateAction = `
     trx_id: String!
     block_num: Int!
     block_id: String!

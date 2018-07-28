@@ -1,0 +1,120 @@
+{
+  "version": "eosio::abi/1.0",
+  "types": [],
+  "structs": [{
+      "name": "post",
+      "base": "",
+      "fields": [{
+          "name": "poster",
+          "type": "name"
+        },{
+          "name": "post_uuid",
+          "type": "string"
+        },{
+          "name": "content",
+          "type": "string"
+        },{
+          "name": "reply_to_poster",
+          "type": "name"
+        },{
+          "name": "reply_to_post_uuid",
+          "type": "string"
+        },{
+          "name": "certify",
+          "type": "bool"
+        },{
+          "name": "json_metadata",
+          "type": "string"
+        }
+      ]
+    },{
+      "name": "unpost",
+      "base": "",
+      "fields": [{
+          "name": "poster",
+          "type": "name"
+        },{
+          "name": "post_uuid",
+          "type": "string"
+        }
+      ]
+    },{
+      "name": "propose",
+      "base": "",
+      "fields": [{
+          "name": "proposer",
+          "type": "name"
+        },{
+          "name": "proposal_name",
+          "type": "name"
+        },{
+          "name": "title",
+          "type": "string"
+        },{
+          "name": "proposal_json",
+          "type": "string"
+        }
+      ]
+    },{
+      "name": "unpropose",
+      "base": "",
+      "fields": [{
+          "name": "proposer",
+          "type": "name"
+        },{
+          "name": "proposal_name",
+          "type": "name"
+        }
+      ]
+    },{
+      "name": "vote",
+      "base": "",
+      "fields": [{
+          "name": "voter",
+          "type": "name"
+        },{
+          "name": "proposer",
+          "type": "name"
+        },{
+          "name": "proposal_name",
+          "type": "name"
+        },{
+          "name": "proposal_hash",
+          "type": "string"
+        },{
+          "name": "vote",
+          "type": "bool"
+        },{
+          "name": "vote_json",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "actions": [{
+      "name": "post",
+      "type": "post",
+      "ricardian_contract": ""
+    },{
+      "name": "unpost",
+      "type": "unpost",
+      "ricardian_contract": ""
+    },{
+      "name": "propose",
+      "type": "propose",
+      "ricardian_contract": ""
+    },{
+      "name": "unpropose",
+      "type": "unpropose",
+      "ricardian_contract": ""
+    },{
+      "name": "vote",
+      "type": "vote",
+      "ricardian_contract": ""
+    }
+  ],
+  "tables": [],
+  "ricardian_clauses": [],
+  "error_messages": [],
+  "abi_extensions": []
+}
