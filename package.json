@@ -16,7 +16,7 @@
     "graphql",
     "eos"
   ],
-  "author": "Denis Carriere <denis@eosnation.io>",
+  "author": "EOS BP Developers",
   "contributors": [
     "Denis Carriere <denis@eosnation.io>"
   ],
@@ -24,7 +24,7 @@
   "bugs": {
     "url": "https://github.com/EOS-BP-Developers/eosio-graphql/issues"
   },
-  "homepage": "https://github.com/EOS-BP-Developers/eosio-graphql#readme",
+  "homepage": "https://github.com/EOS-BP-Developers/eosio-graphql",
   "dependencies": {
     "apollo-server": "*",
     "eosio-mongodb-queries": "*",

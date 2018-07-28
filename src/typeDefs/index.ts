@@ -10,9 +10,11 @@ export const typeDefs = gql`
         query: Query
     }
     type Query {
+        name: String
         version: String
         license: String
         author: String
+        homepage: String
         contributors: [String]
     }
     ${authorization}
