@@ -33,6 +33,8 @@ for (const name of Object.keys(abis)) {
               case "skip":
               case "limit":
               case "sort":
+              case "contracts":
+              case "actions":
               case "lte_block_num":
               case "gte_block_num":
                   break;
@@ -44,8 +46,8 @@ for (const name of Object.keys(abis)) {
           }
           // TO-DO => Implement Options
           const actions = await getActions(client, {
-              accounts: [name],
-              names: [action],
+              accounts: options.contracts || [name],
+              names: options.actions || [action],
               block_id: options.block_id,
               block_num: options.block_num,
               trx_id: options.trx_id,
