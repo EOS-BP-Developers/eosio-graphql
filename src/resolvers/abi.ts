@@ -1,6 +1,5 @@
 import { getActions } from "eosio-mongodb-queries";
 import { client } from "./mongodb";
-import { toTitleCase } from "../utils";
 import { abis } from "../abi";
 import { resolvers } from "./";
 
