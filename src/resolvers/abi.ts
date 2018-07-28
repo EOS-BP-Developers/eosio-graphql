@@ -1,21 +1,8 @@
-import * as fs from "fs";
-import * as path from "path";
 import { getActions } from "eosio-mongodb-queries";
 import { client } from "./mongodb";
+import { toTitleCase } from "../utils";
 import { abis } from "../abi";
-
-// Parse package.json
-const pckg = JSON.parse(fs.readFileSync(path.join(__dirname, "..", "..", "package.json"), "utf8"));
-
-const Query: any = {
-    // EOSIO GraphQL Metadata
-    name: () => pckg.name,
-    version: () => pckg.version,
-    license: () => pckg.license,
-    homepage: () => pckg.homepage,
-    author: () => pckg.author,
-    contributors: () => pckg.contributors,
-};
+import { resolvers } from "./";
 
 for (const name of Object.keys(abis)) {
   const nameQuery = name.replace(".", "");
@@ -59,10 +46,5 @@ for (const name of Object.keys(abis)) {
           return await actions.toArray();
       };
   }
-  Query[nameQuery] = () => resolver;
+  resolvers.Query[nameQuery] = () => resolver;
 }
-
-// The resolvers
-export const resolvers: any = {
-    Query,
-};

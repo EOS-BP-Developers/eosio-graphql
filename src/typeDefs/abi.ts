@@ -4,6 +4,7 @@ import { abis } from "../abi";
 
 // Dynamically load ABI's
 export let abiTypeDefs = "";
+export let abiTypeDefsData = "";
 export let abiQueries = "";
 export let abiActions = "";
 
@@ -16,18 +17,42 @@ for (const name of Object.keys(abis)) {
 
     for (const action of Object.keys(abis[name])) {
         // Smart Contract + Action Name
-        abiTypeDefs += `\ntype ${nameType}${toTitleCase(action)} {`;
         abiActions += `\n     ${action}(`;
 
         for (const field of Object.keys(abis[name][action])) {
           // Field Name + Data Type
           const type = abis[name][action][field];
-          abiTypeDefs += `\n    ${field}: ${type},`;
           abiActions += `\n        ${field}: ${type},`;
         }
         abiActions += templateActionQuery;
-        abiActions += `\n    ): ${nameType}${toTitleCase(action)}\n`;
-        abiTypeDefs += "\n}\n";
+        abiActions += `    ): [${nameType}${toTitleCase(action)}]\n`;
     }
     abiActions += "}\n";
+}
+
+// abiTypeDefsData
+for (const name of Object.keys(abis)) {
+    const nameType = name.split(".").map((n) => toTitleCase(n)).join("");
+    // Actions
+    for (const action of Object.keys(abis[name])) {
+        abiTypeDefsData += `\ntype ${nameType}${toTitleCase(action)}Data {`;
+        // Fields
+        for (const field of Object.keys(abis[name][action])) {
+          const type = abis[name][action][field];
+          abiTypeDefsData += `\n    ${field}: ${type},`;
+        }
+        abiTypeDefsData += "\n}\n";
+    }
+}
+
+// abiTypeDefs
+for (const name of Object.keys(abis)) {
+    const nameType = name.split(".").map((n) => toTitleCase(n)).join("");
+    // Actions
+    for (const action of Object.keys(abis[name])) {
+        abiTypeDefs += `\ntype ${nameType}${toTitleCase(action)} {`;
+        abiTypeDefs += templateAction;
+        abiTypeDefs += `    data: ${nameType}${toTitleCase(action)}Data`;
+        abiTypeDefs += "\n}\n";
+    }
 }
