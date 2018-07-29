@@ -5,16 +5,12 @@ export const mongodbResolvers: any = {};
 
 mongodbResolvers.account = async (_: any, options: any) => {
     if (!client) { throw new Error("MongoClient is not initialized"); }
-
     const result = await getAccount(client, options.name, options);
     return result;
 };
 
 mongodbResolvers.blocks = async (_: any, options: any) => {
     if (!client) { throw new Error("MongoClient is not initialized"); }
-
-    // defaults options
-    options.limit = options.limit || 25;
     const result = await getBlocks(client, options);
     return await result.toArray();
 };

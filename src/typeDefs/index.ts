@@ -5,6 +5,8 @@ import { abiActions, abiQueries, abiTypeDefs, abiTypeDefsData } from "./abi";
 
 // The GraphQL schema in string form
 export const typeDefs = gql`
+    scalar JSON
+
     schema {
         query: Query
     }

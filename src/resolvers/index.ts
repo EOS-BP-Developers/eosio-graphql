@@ -1,5 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
+import GraphQLJSON from "graphql-type-json";
 import { abiResolvers } from "./abi";
 import { mongodbResolvers } from "./mongodb";
 
@@ -29,4 +30,5 @@ for (const mongodbResolver of Object.keys(mongodbResolvers)) {
 // Final resolvers
 export const resolvers: any = {
     Query,
+    JSON: GraphQLJSON,
 };

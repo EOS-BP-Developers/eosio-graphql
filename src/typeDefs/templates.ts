@@ -1,7 +1,8 @@
 export const templateParams = `
         limit: Int,
         skip: Int,
-        sort: Int,
+        sort: JSON,
+        match: JSON,
         block_num: Int,
         block_id: String,
         lte_block_num: Int,

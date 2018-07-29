@@ -31,12 +31,14 @@
     "eosio-mongodb-queries": "*",
     "glob": "*",
     "graphql": "*",
+    "graphql-type-json": "*",
     "mongodb": "*"
   },
   "devDependencies": {
     "@types/dotenv": "*",
     "@types/glob": "*",
     "@types/graphql": "*",
+    "@types/graphql-type-json": "*",
     "@types/mongodb": "*",
     "@types/node": "*",
     "tslint": "*",
