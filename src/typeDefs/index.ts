@@ -1,5 +1,6 @@
 import { gql } from "apollo-server";
 import { authorization } from "./templates";
+import { mongodb } from "./mongodb";
 import { abiActions, abiQueries, abiTypeDefs, abiTypeDefsData } from "./abi";
 
 // The GraphQL schema in string form
@@ -8,9 +9,11 @@ export const typeDefs = gql`
         query: Query
     }
 
+    ${authorization}
+    ${mongodb}
+
     ${abiActions}
     ${abiTypeDefs}
-    ${authorization}
     ${abiTypeDefsData}
 
     type Query {

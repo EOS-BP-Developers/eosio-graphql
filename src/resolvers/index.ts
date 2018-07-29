@@ -1,6 +1,7 @@
 import * as fs from "fs";
 import * as path from "path";
 import { abiResolvers } from "./abi";
+import { mongodbResolvers } from "./mongodb";
 
 // Parse package.json
 const pckg = JSON.parse(fs.readFileSync(path.join(__dirname, "..", "..", "package.json"), "utf8"));
@@ -18,6 +19,11 @@ export const Query: any = {
 // Load ABI resolvers
 for (const abiResovler of Object.keys(abiResolvers)) {
     Query[abiResovler] = abiResolvers[abiResovler];
+}
+
+// Load MongoDB resolvers
+for (const mongodbResolver of Object.keys(mongodbResolvers)) {
+    Query[mongodbResolver] = mongodbResolvers[mongodbResolver];
 }
 
 // Final resolvers

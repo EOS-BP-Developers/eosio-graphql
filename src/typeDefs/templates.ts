@@ -1,14 +1,18 @@
-export const templateActionQuery = `
+export const templateParams = `
         limit: Int,
         skip: Int,
         sort: Int,
-        contracts: [String],
-        actions: [String],
-        trx_id: String,
         block_num: Int,
         block_id: String,
         lte_block_num: Int,
         gte_block_num: Int,
+`;
+
+export const templateParamsAction = `
+        contracts: [String],
+        actions: [String],
+        trx_id: String,
+        ${templateParams}
 `;
 
 export const authorization = `
@@ -17,11 +21,15 @@ type Authorization {
     permission: String
 }`;
 
-export const templateAction = `
-    trx_id: String!
+export const templateTypes = `
     block_num: Int!
     block_id: String!
+    authorization: [Authorization]
+`;
+
+export const templateTypesAction = `
+    trx_id: String!
     account: String!
     name: String!
-    authorization: [Authorization]
+    ${templateTypes}
 `;

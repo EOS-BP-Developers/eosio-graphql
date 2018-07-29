@@ -1,4 +1,4 @@
-import { templateActionQuery, templateAction } from "./templates";
+import { templateParamsAction, templateTypesAction } from "./templates";
 import { toTitleCase } from "../utils";
 import { abis } from "../abi";
 
@@ -24,7 +24,7 @@ for (const name of Object.keys(abis)) {
           const type = abis[name][action][field];
           abiActions += `\n        ${field}: ${type},`;
         }
-        abiActions += templateActionQuery;
+        abiActions += templateParamsAction;
         abiActions += `    ): [${nameType}${toTitleCase(action)}]\n`;
     }
     abiActions += "}\n";
@@ -51,7 +51,7 @@ for (const name of Object.keys(abis)) {
     // Actions
     for (const action of Object.keys(abis[name])) {
         abiTypeDefs += `\ntype ${nameType}${toTitleCase(action)} {`;
-        abiTypeDefs += templateAction;
+        abiTypeDefs += templateTypesAction;
         abiTypeDefs += `    data: ${nameType}${toTitleCase(action)}Data`;
         abiTypeDefs += "\n}\n";
     }

@@ -1,5 +1,5 @@
 import { getActions } from "eosio-mongodb-queries";
-import { client } from "./mongodb";
+import { client } from "../utils/mongoClient";
 import { abis } from "../abi";
 
 export const abiResolvers: any = {};

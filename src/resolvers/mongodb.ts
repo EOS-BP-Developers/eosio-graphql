@@ -1,11 +1,20 @@
-import { MongoClient } from "mongodb";
-import { MONGODB_URI } from "../../config";
+import { client } from "../utils/mongoClient";
+import { getAccount, getBlocks } from "eosio-mongodb-queries";
 
-export let client: MongoClient | null = null;
+export const mongodbResolvers: any = {};
 
-// Intialize MongoDB Client
-(async () => {
-    if (!client) {
-        client = await MongoClient.connect(MONGODB_URI, { useNewUrlParser: true });
-    }
-})();
+mongodbResolvers.account = async (_: any, options: any) => {
+    if (!client) { throw new Error("MongoClient is not initialized"); }
+
+    const result = await getAccount(client, options.name, options);
+    return result;
+};
+
+mongodbResolvers.blocks = async (_: any, options: any) => {
+    if (!client) { throw new Error("MongoClient is not initialized"); }
+
+    // defaults options
+    options.limit = options.limit || 25;
+    const result = await getBlocks(client, options);
+    return await result.toArray();
+};
