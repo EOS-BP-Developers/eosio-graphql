@@ -10,8 +10,8 @@ export const templateParams = `
 `;
 
 export const templateParamsAction = `
-        contracts: [String],
-        actions: [String],
+        accounts: [String],
+        names: [String],
         trx_id: String,
         ${templateParams}
 `;

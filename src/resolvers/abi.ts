@@ -13,8 +13,8 @@ for (const name of Object.keys(abis)) {
             if (!client) { throw new Error("MongoClient is not initialized"); }
 
             // Set required parameters
-            options.accounts = options.contracts || [name];
-            options.names = options.actions || [action];
+            options.accounts = options.accounts || [name];
+            options.names = options.names || [action];
 
             // Optional parameters
             if (!options.match) {
@@ -29,8 +29,6 @@ for (const name of Object.keys(abis)) {
                     case "sort":
                     case "accounts":
                     case "names":
-                    case "contracts":
-                    case "actions":
                     case "lte_block_num":
                     case "gte_block_num":
                     case "match":
@@ -41,7 +39,7 @@ for (const name of Object.keys(abis)) {
                 }
                 options.match = match;
             }
-            console.log(options);
+            console.log(JSON.stringify({query: `abi.${name}.${action}`, options}));
             const actions = await getActions(client, options);
             return await actions.toArray();
         };

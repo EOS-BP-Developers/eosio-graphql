@@ -30,3 +30,22 @@ export function toTitleCase(str: string) {
       (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(),
   );
 }
+
+/**
+ * Flatten Object
+ *
+ * @param {any} obj Object
+ * @returns {any} Flattened Object
+ * @example
+ * const obj = {data: {from: "eosnationftw"}};
+ * flattenObject(obj) //=> {"data.from": "eosnationftw"};
+ */
+export function flattenObject(obj: any) {
+  const flattenObj: any = {};
+  for (const root of Object.keys(obj)) {
+      for (const key of Object.keys(obj[root])) {
+          flattenObj[`${root}.${key}`] = obj[root][key];
+      }
+  }
+  return flattenObj;
+}

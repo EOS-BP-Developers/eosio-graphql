@@ -1,4 +1,4 @@
-import { templateParams, templateTypes } from "./templates";
+import { templateParams, templateParamsAction } from "./templates";
 
 export const mongodb = `
 type Account {
@@ -33,11 +33,25 @@ type Blocks {
     validated: Boolean
 }
 
+type Actions {
+    block_num: Int
+    block_id: String
+    action_num: Int
+    trx_id: String
+    cfa: Boolean
+    account: String
+    name: String
+    authorization: [Authorization]
+    data: JSON
+}
 
 extend type Query {
     account( name: String!, block_num: Int ): Account
     blocks(
         ${templateParams}
     ): [Blocks]
+    actions(
+        ${templateParamsAction}
+    ): [Actions]
 }
 `;
