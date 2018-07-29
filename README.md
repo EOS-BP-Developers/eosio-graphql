@@ -20,6 +20,17 @@ $ npm start
 🚀 Server ready at http://localhost:4000/graphql
 ```
 
+
+
+## Contributors
+
+This is made with ♥ by:
+
+- [EOS Nation](https://eosnation.io) (`eosnationftw`)
+
+> Voting on the EOSIO mainnet helps build more awesome tools for the EOS community.
+
+
 ## GraphQL examples
 
 - [`eosio` account](#eosio-account)
@@ -29,6 +40,30 @@ $ npm start
 Explore & learn the query data schema by expanding the `schema` tab.
 
 ![image](https://user-images.githubusercontent.com/550895/43240455-93620602-9064-11e8-8eaa-60e5e6baa342.png)
+
+### `eosio.token` transfer
+
+Find the last 500 transfer outs from `chainceout11` from the KARMA token contract.
+
+```gql
+query {
+  eosiotoken {
+  	transfer (
+      limit: 500,
+      from: "chainceout11"
+      contracts: ["therealkarma"],
+      sort: {block_num: -1}
+    ) {
+      data {
+        from
+        to
+        quantity
+        memo
+      }
+    }
+  }
+}
+```
 
 ### `eosio` account
 
@@ -94,10 +129,3 @@ query {
 
 ![image](https://user-images.githubusercontent.com/550895/43240281-abc32128-9063-11e8-8d57-a73f1fd71a86.png)
 
-## Contributors
-
-This is made with ♥ by:
-
-- [EOS Nation](https://eosnation.io) (`eosnationftw`)
-
-> Voting on the EOSIO mainnet helps build more awesome tools for the EOS community.
