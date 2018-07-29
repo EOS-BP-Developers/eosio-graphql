@@ -27,6 +27,8 @@ for (const name of Object.keys(abis)) {
                     case "skip":
                     case "limit":
                     case "sort":
+                    case "accounts":
+                    case "names":
                     case "contracts":
                     case "actions":
                     case "lte_block_num":
@@ -39,7 +41,7 @@ for (const name of Object.keys(abis)) {
                 }
                 options.match = match;
             }
-
+            console.log(options);
             const actions = await getActions(client, options);
             return await actions.toArray();
         };

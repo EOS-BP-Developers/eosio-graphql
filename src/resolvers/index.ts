@@ -18,8 +18,8 @@ export const Query: any = {
 };
 
 // Load ABI resolvers
-for (const abiResovler of Object.keys(abiResolvers)) {
-    Query[abiResovler] = abiResolvers[abiResovler];
+for (const abiResolver of Object.keys(abiResolvers)) {
+    Query[abiResolver] = abiResolvers[abiResolver];
 }
 
 // Load MongoDB resolvers
