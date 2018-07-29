@@ -25,12 +25,12 @@ type Authorization {
 export const templateTypes = `
     block_num: Int!
     block_id: String!
-    authorization: [Authorization]
 `;
 
 export const templateTypesAction = `
     trx_id: String!
     account: String!
     name: String!
+    authorization: [Authorization]
     ${templateTypes}
 `;

@@ -33,14 +33,6 @@ This is made with ♥ by:
 
 ## GraphQL examples
 
-- [`eosio` account](#eosio-account)
-- [`eosio.forum` post](#eosioforum-post)
-- [`eosio.forum` vote](#eosioforum-vote)
-
-Explore & learn the query data schema by expanding the `schema` tab.
-
-![image](https://user-images.githubusercontent.com/550895/43240455-93620602-9064-11e8-8eaa-60e5e6baa342.png)
-
 ### `eosio.token` transfer
 
 Find most recent 50 transfers from `chainceout11` using the `KARMA` token contract.
@@ -48,7 +40,7 @@ Find most recent 50 transfers from `chainceout11` using the `KARMA` token contra
 ```gql
 query {
   eosiotoken {
-  	transfer (
+    transfer (
       limit: 50,
       from: "chainceout11"
       contracts: ["therealkarma"],
@@ -65,25 +57,37 @@ query {
 }
 ```
 
+### `eosio` blocks
+
+Find the most recent irreversible blocks.
+
+```
+query {
+  blocks(sort: { block_num: -1 }, match: { irreversible: true }) {
+    block_num
+    irreversible
+    block {
+      producer
+    }
+  }
+}
+```
+
 ### `eosio` account
 
 Query an account by `name` & `block_num` to get the exact `stake_quanity` at that given referen block number.
 
 ```gql
 query {
-  eosio {
-    account(name:"eosnationftw", block_num:6000000) {
-      name
-      block_num
-      stake_quantity
-      stake_net_quantity
-      stake_cpu_quantity
-    }
+  account(name:"eosnationftw", block_num:6000000) {
+    name
+    block_num
+    stake_quantity
+    stake_net_quantity
+    stake_cpu_quantity
   }
 }
 ```
-
-![image](https://user-images.githubusercontent.com/550895/43240376-34ddee70-9064-11e8-83a3-8ebf6129933e.png)
 
 ### `eosio.forum` post
 
@@ -105,8 +109,6 @@ query {
 }
 ```
 
-![image](https://user-images.githubusercontent.com/550895/43240254-926f5ea8-9063-11e8-8e02-5348424e1c86.png)
-
 ### `eosio.forum` vote
 
 Query all votes based on a particular `proposition`.
@@ -126,6 +128,4 @@ query {
   }
 }
 ```
-
-![image](https://user-images.githubusercontent.com/550895/43240281-abc32128-9063-11e8-8d57-a73f1fd71a86.png)
 
