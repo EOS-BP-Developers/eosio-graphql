@@ -43,13 +43,13 @@ Explore & learn the query data schema by expanding the `schema` tab.
 
 ### `eosio.token` transfer
 
-Find the last 500 transfer outs from `chainceout11` from the KARMA token contract.
+Find most recent 50 transfers from `chainceout11` using the `KARMA` token contract.
 
 ```gql
 query {
   eosiotoken {
   	transfer (
-      limit: 500,
+      limit: 50,
       from: "chainceout11"
       contracts: ["therealkarma"],
       sort: {block_num: -1}
