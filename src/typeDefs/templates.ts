@@ -3,6 +3,10 @@ export const templateParams = `
         skip: Int,
         sort: JSON,
         match: JSON,
+`;
+
+export const templateParamsBlocks = `
+        ${templateParams}
         block_num: Int,
         block_id: String,
         lte_block_num: Int,
@@ -13,7 +17,7 @@ export const templateParamsAction = `
         accounts: [String],
         names: [String],
         trx_id: String,
-        ${templateParams}
+        ${templateParamsBlocks}
 `;
 
 export const authorization = `
