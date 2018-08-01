@@ -20,7 +20,7 @@ export const typeDefs = gql`
 
     type Query {
         name: String
-        version: String
+        version: JSON
         license: String
         author: String
         homepage: String

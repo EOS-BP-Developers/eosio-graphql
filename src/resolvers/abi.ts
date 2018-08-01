@@ -1,6 +1,7 @@
 import { getActions } from "eosio-mongodb-queries";
 import { client } from "../utils/mongoClient";
 import { abis } from "../abi";
+import { isString } from "util";
 
 export const abiResolvers: any = {};
 
@@ -13,8 +14,8 @@ for (const name of Object.keys(abis)) {
             if (!client) { throw new Error("MongoClient is not initialized"); }
 
             // Set required parameters
-            options.accounts = options.accounts || [name];
-            options.names = options.names || [action];
+            options.account = options.account || [name];
+            options.name = options.name || [action];
 
             // Optional parameters
             if (!options.match) {
@@ -23,12 +24,13 @@ for (const name of Object.keys(abis)) {
                     switch (key) {
                     case "block_id":
                     case "block_num":
+                    case "irreversible":
                     case "trx_id":
                     case "skip":
                     case "limit":
                     case "sort":
-                    case "accounts":
-                    case "names":
+                    case "account":
+                    case "name":
                     case "lte_block_num":
                     case "gte_block_num":
                     case "match":
@@ -39,9 +41,15 @@ for (const name of Object.keys(abis)) {
                 }
                 options.match = match;
             }
-            console.log(JSON.stringify({query: `abi.${name}.${action}`, options}));
-            const actions = await getActions(client, options);
-            return await actions.toArray();
+            // Handle Regex queries
+            if (options.match && isString(options.match)) { options.match = JSON.parse(options.match); }
+
+            const now = Date.now();
+            const cursor = await getActions(client, options);
+            const result = await cursor.toArray();
+            const elapsed = Date.now() - now;
+            console.log(JSON.stringify({elapsed, query: `abi.${name}.${action}`, options}));
+            return result;
         };
     }
     abiResolvers[nameQuery] = () => resolver;
