@@ -1,0 +1,91 @@
+{
+  "version": "eosio::abi/1.0",
+  "types": [],
+  "structs": [{
+      "name": "oracle",
+      "base": "",
+      "fields": [{
+          "name": "id",
+          "type": "uint64"
+        },{
+          "name": "type",
+          "type": "string"
+        },{
+          "name": "value",
+          "type": "uint64"
+        },{
+          "name": "update_time",
+          "type": "uint64"
+        },{
+          "name": "description",
+          "type": "string"
+        }
+      ]
+    },{
+      "name": "setapp",
+      "base": "",
+      "fields": [{
+          "name": "application",
+          "type": "name"
+        }
+      ]
+    },{
+      "name": "addoracle",
+      "base": "",
+      "fields": [{
+          "name": "id",
+          "type": "uint64"
+        },{
+          "name": "type",
+          "type": "string"
+        },{
+          "name": "value",
+          "type": "uint64"
+        },{
+          "name": "update_time",
+          "type": "uint64"
+        },{
+          "name": "description",
+          "type": "string"
+        }
+      ]
+    },{
+      "name": "deloracle",
+      "base": "",
+      "fields": [{
+          "name": "id",
+          "type": "uint64"
+        }
+      ]
+    }
+  ],
+  "actions": [{
+      "name": "setapp",
+      "type": "setapp",
+      "ricardian_contract": ""
+    },{
+      "name": "addoracle",
+      "type": "addoracle",
+      "ricardian_contract": ""
+    },{
+      "name": "deloracle",
+      "type": "deloracle",
+      "ricardian_contract": ""
+    }
+  ],
+  "tables": [{
+      "name": "oracle",
+      "index_type": "i64",
+      "key_names": [
+        "id"
+      ],
+      "key_types": [
+        "uint64"
+      ],
+      "type": "oracle"
+    }
+  ],
+  "ricardian_clauses": [],
+  "error_messages": [],
+  "abi_extensions": []
+}
