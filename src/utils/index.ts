@@ -7,11 +7,12 @@
  * convertType("uint32") //= Int
  * convertType("account_name") //= String
  */
-export function convertType(type: string): "String" | "Int" {
+export function convertType(type: string): "String" | "Int" | "JSON" {
   switch (type) {
     case "name": return "String";
     case "checksum256": return "String";
     case "uint16": return "Int";
+    case "authority": return "JSON";
     default: return "String";
   }
 }

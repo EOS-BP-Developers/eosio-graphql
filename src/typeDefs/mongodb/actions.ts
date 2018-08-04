@@ -1,4 +1,4 @@
-import { templateParamsAction } from "../templates";
+import { templateParamsBlocks } from "../templates";
 
 export const actions = `
 type Actions {
@@ -22,7 +22,10 @@ type Actions {
 
 extend type Query {
     actions(
-        ${templateParamsAction}
+        trx_id: String,
+        account: [String],
+        name: [String],
+        ${templateParamsBlocks}
     ): [Actions]
 }
 `;

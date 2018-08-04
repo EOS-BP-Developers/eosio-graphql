@@ -16,8 +16,6 @@ export const templateParamsBlocks = `
 
 export const templateParamsAction = `
         trx_id: String,
-        account: [String],
-        name: [String],
         ${templateParamsBlocks}
 `;
 
