@@ -2,13 +2,13 @@ import { templateParamsAction, templateTypesAction } from "./templates";
 import { toTitleCase } from "../utils";
 import { getAbis } from "../abi";
 
-export function getAbiSchema({ abiDir = '' }) {
+export function getAbiSchema({ abiDir = "" }) {
   // Dynamically load ABI's
   let abiTypeDefs = "";
   let abiTypeDefsData = "";
   let abiQueries = "";
   let abiActions = "";
-  const abis: any = getAbis({ userDir: abiDir })
+  const abis: any = getAbis({ userDir: abiDir });
 
   for (const name of Object.keys(abis)) {
     // Name of Smart Contract
@@ -63,5 +63,5 @@ export function getAbiSchema({ abiDir = '' }) {
     abiTypeDefsData,
     abiQueries,
     abiActions,
-  }
+  };
 }

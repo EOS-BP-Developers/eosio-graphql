@@ -4,9 +4,9 @@ import { flattenObject } from "../../utils";
 import { isString } from "util";
 
 const getBlocksResolver = ({
-  mongoClient
+  mongoClient,
 }: {
-  mongoClient: MongoClient
+  mongoClient: MongoClient,
 }) => async (_: any, options: any) => {
     // Handles simple block match
     if (options.match && options.match.block) { options.match = flattenObject(options.match); }

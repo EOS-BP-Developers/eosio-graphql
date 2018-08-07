@@ -7,7 +7,7 @@ import getCountResolver from "./count";
 export function getMongodbResolvers({
   mongoClient,
 }: {
-  mongoClient: MongoClient
+  mongoClient: MongoClient,
 }) {
   if (!mongoClient) { throw new Error("MongoClient is not initialized"); }
   return {
@@ -15,5 +15,5 @@ export function getMongodbResolvers({
     actions: getActionsResolver({ mongoClient }),
     blocks: getBlocksResolver({ mongoClient }),
     count: getCountResolver({ mongoClient }),
-  }
+  };
 }

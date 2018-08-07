@@ -2,9 +2,9 @@ import { MongoClient } from "mongodb";
 import { getAccount } from "eosio-mongodb-queries";
 
 const getAccountResolver = ({
-  mongoClient
+  mongoClient,
 }: {
-  mongoClient: MongoClient
+  mongoClient: MongoClient,
 }) => async (_: any, options: any) => {
     const now = Date.now();
     const result = await getAccount(mongoClient, options.name, options);

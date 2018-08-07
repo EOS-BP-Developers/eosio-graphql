@@ -4,9 +4,9 @@ import { flattenObject } from "../../utils";
 import { isString } from "util";
 
 const getActionsResolver = ({
-  mongoClient
+  mongoClient,
 }: {
-  mongoClient: MongoClient
+  mongoClient: MongoClient,
 }) => async (_: any, options: any) => {
     // Handles simple data match
     if (options.match && options.match.data) { options.match = flattenObject(options.match); }

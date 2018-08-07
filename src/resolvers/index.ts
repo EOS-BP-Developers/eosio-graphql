@@ -26,13 +26,13 @@ export function defaultBuildResolvers(resolvers: any) {
 }
 
 export function getResolvers({
-  abiDir = '',
+  abiDir = "",
   buildResolvers = defaultBuildResolvers,
   mongoClient,
 }: {
-  abiDir: string
-  buildResolvers: Function
-  mongoClient: MongoClient
+  abiDir: string,
+  buildResolvers: (resolvers: any) => any,
+  mongoClient: MongoClient,
 }) {
   // Load MongoDB resolvers
   Object.assign(Query, getMongodbResolvers({ mongoClient }));
@@ -45,5 +45,5 @@ export function getResolvers({
     JSON: GraphQLJSON,
   };
 
-  return buildResolvers(resolvers)
+  return buildResolvers(resolvers);
 }

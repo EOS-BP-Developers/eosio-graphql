@@ -4,9 +4,9 @@ import * as queries from "eosio-mongodb-queries";
 // import { isString } from "util";
 
 const getCountResolver = ({
-  mongoClient
+  mongoClient,
 }: {
-  mongoClient: MongoClient
+  mongoClient: MongoClient,
 }) => async (_: any, options: any) => {
     const now = Date.now();
     const account_controls = await queries.count(mongoClient, "account_controls");

@@ -3,7 +3,7 @@ import * as path from "path";
 import * as glob from "glob";
 import { convertType } from "../utils";
 
-export function getAbis({ userDir = '' }) {
+export function getAbis({ userDir = "" }) {
   const abis: {
     [name: string]: {
       [action: string]: {
@@ -45,5 +45,5 @@ export function getAbis({ userDir = '' }) {
     glob.sync(path.join(userDir, "*.abi")).forEach(loadAbi);
   }
 
-  return abis
+  return abis;
 }

@@ -4,9 +4,9 @@ import { mongodb } from "./mongodb";
 import { getAbiSchema } from "./abi";
 
 export function defaultBuildSchema({
-  scalarSchema = '',
-  typeSchema = '',
-  querySchema = '',
+  scalarSchema = "",
+  typeSchema = "",
+  querySchema = "",
 }) {
   // The GraphQL schema in string form
   return gql`
@@ -25,7 +25,7 @@ export function defaultBuildSchema({
 }
 
 export function getTypeDefs({
-  abiDir = '',
+  abiDir = "",
   buildSchema = defaultBuildSchema,
 }) {
   const {
@@ -33,7 +33,7 @@ export function getTypeDefs({
     abiQueries,
     abiTypeDefs,
     abiTypeDefsData,
-  } = getAbiSchema({ abiDir })
+  } = getAbiSchema({ abiDir });
   return buildSchema({
     scalarSchema: `
       scalar JSON
@@ -54,6 +54,6 @@ export function getTypeDefs({
       homepage: String
       contributors: [String]
       ${abiQueries}
-    `
-  })
-};
+    `,
+  });
+}

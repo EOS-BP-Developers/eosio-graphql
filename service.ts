@@ -1,4 +1,4 @@
-import { eosGraphQLGateway } from './'
+import { eosGraphQLGateway } from "./"
 import { getMongoClient } from "./src/utils/mongoClient";
 
 (async () => {

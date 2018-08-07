@@ -6,12 +6,12 @@ import { getResolvers, defaultBuildResolvers } from "./src/resolvers/index";
 
 export function eosGraphQLGateway(config: any = {}) {
   const {
-    host = 'localhost',
+    host = "localhost",
     port = 4000,
     mongoClient,
     buildSchema = defaultBuildSchema,
     buildResolvers = defaultBuildResolvers,
-    abiDir = '',
+    abiDir = "",
   } = config;
   const server = new ApolloServer({
     typeDefs: getTypeDefs({

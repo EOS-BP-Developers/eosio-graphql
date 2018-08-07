@@ -4,14 +4,14 @@ import { getAbis } from "../abi";
 import { isString } from "util";
 
 export function getAbiResolvers({
-  abiDir = '',
+  abiDir = "",
   mongoClient,
 }: {
-  abiDir: string
-  mongoClient: MongoClient
+  abiDir: string,
+  mongoClient: MongoClient,
 }) {
   const abiResolvers: any = {};
-  const abis: any = getAbis({ userDir: abiDir })
+  const abis: any = getAbis({ userDir: abiDir });
 
   for (const account of Object.keys(abis)) {
     const query = account.replace(".", "");
