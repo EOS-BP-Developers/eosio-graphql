@@ -1,30 +1,59 @@
 import { gql } from "apollo-server";
 import { authorization } from "./templates";
 import { mongodb } from "./mongodb";
-import { abiActions, abiQueries, abiTypeDefs, abiTypeDefsData } from "./abi";
+import { getAbiSchema } from "./abi";
 
-// The GraphQL schema in string form
-export const typeDefs = gql`
-    scalar JSON
+export function defaultBuildSchema({
+  scalarSchema = '',
+  typeSchema = '',
+  querySchema = '',
+}) {
+  // The GraphQL schema in string form
+  return gql`
+      ${scalarSchema}
 
-    schema {
-        query: Query
-    }
+      schema {
+          query: Query
+      }
 
-    ${authorization}
-    ${mongodb}
+      ${typeSchema}
 
-    ${abiActions}
-    ${abiTypeDefs}
-    ${abiTypeDefsData}
+      type Query {
+          ${querySchema}
+      }
+  `;
+}
 
-    type Query {
-        name: String
-        version: JSON
-        license: String
-        author: String
-        homepage: String
-        contributors: [String]
-        ${abiQueries}
-    }
-`;
+export function getTypeDefs({
+  abiDir = '',
+  buildSchema = defaultBuildSchema,
+}) {
+  const {
+    abiActions,
+    abiQueries,
+    abiTypeDefs,
+    abiTypeDefsData,
+  } = getAbiSchema({ abiDir })
+  return buildSchema({
+    scalarSchema: `
+      scalar JSON
+    `,
+    typeSchema: `
+      ${authorization}
+      ${mongodb}
+
+      ${abiActions}
+      ${abiTypeDefs}
+      ${abiTypeDefsData}
+    `,
+    querySchema: `
+      name: String
+      version: JSON
+      license: String
+      author: String
+      homepage: String
+      contributors: [String]
+      ${abiQueries}
+    `
+  })
+};

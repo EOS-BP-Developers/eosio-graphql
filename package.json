@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "tslint --project .",
-    "start": "tsc && node index.js"
+    "start": "tsc && node service.js"
   },
   "repository": {
     "type": "git",

@@ -20,7 +20,53 @@ $ npm start
 🚀 Server ready at http://localhost:4000/graphql
 ```
 
+## Programmatic use
 
+```js
+import { eosGraphQLGateway, gql } from 'eosio-graphql'
+import { getMongoClient } from "./mongoClient";
+
+(async () => {
+
+  const {
+    startService,
+    server, // optional
+    service, // optional
+  } = eosGraphQLGateway({
+    mongoClient: await getMongoClient(),
+    host: 'localhost', // optional
+    port: 4000, // optional
+    buildSchema: ({ // optional
+      scalarSchema,
+      typeSchema,
+      querySchema,
+    }) => gql`
+      ${scalarSchema}
+      # my scalars
+      schema {
+        query: Query
+      }
+      ${typeSchema}
+      # my types
+      type Query {
+        ${querySchema}
+        # my queries
+      }
+    `,
+    buildResolvers(resolvers) {  // optional
+      return Object.assign(resolvers, { /* my resolvers */ });
+    },
+    abiDir = './my-abi-files/',  // optional
+  });
+
+  server.use(/* ... */);  // optional
+
+  service.use(/* ... */);  // optional
+
+  startService();
+
+})();
+```
 
 ## Contributors
 

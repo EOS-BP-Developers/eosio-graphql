@@ -3,9 +3,8 @@ import { MONGODB_URI } from "../../config";
 
 export let client: MongoClient | null = null;
 
-// Intialize MongoDB Client
-(async () => {
-    if (!client) {
-        client = await MongoClient.connect(MONGODB_URI, { useNewUrlParser: true });
-    }
-})();
+export async function getMongoClient() {
+  // Intialize MongoDB Client
+  const client: MongoClient = await MongoClient.connect(MONGODB_URI, { useNewUrlParser: true });
+  return client
+}
