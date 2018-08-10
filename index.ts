@@ -1,13 +1,43 @@
 import express from "express";
 import { ApolloServer } from "apollo-server-express";
-import { typeDefs } from "./src/typeDefs/index";
-import { resolvers } from "./src/resolvers/index";
+import { gql } from "apollo-server";
+import { getTypeDefs, defaultBuildSchema } from "./src/typeDefs/index";
+import { getResolvers, defaultBuildResolvers } from "./src/resolvers/index";
 
-const server = new ApolloServer({ typeDefs, resolvers });
+export function eosGraphQLGateway(config: any = {}) {
+  const {
+    host = "localhost",
+    port = 4000,
+    mongoClient,
+    buildSchema = defaultBuildSchema,
+    buildResolvers = defaultBuildResolvers,
+    abiDir = "",
+  } = config;
+  const server = new ApolloServer({
+    typeDefs: getTypeDefs({
+      abiDir,
+      buildSchema,
+    }),
+    resolvers: getResolvers({
+      abiDir,
+      buildResolvers,
+      mongoClient,
+    }),
+  });
+  const app = express();
 
-const app = express();
-server.applyMiddleware({ app });
+  function startService() {
+    server.applyMiddleware({ app });
 
-app.listen({ port: 4000 }, () =>
-  console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`),
-);
+    app.listen({ host, port }, () =>
+      console.log(`🚀 Server ready at http://${host}:${port}${server.graphqlPath}`),
+    );
+  }
+
+  return {
+    server,
+    gql,
+    service: app,
+    startService,
+  };
+}
