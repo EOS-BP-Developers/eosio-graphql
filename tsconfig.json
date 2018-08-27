@@ -15,8 +15,5 @@
         "es6",
         "esnext.asynciterable"
       ]
-    },
-    "files": [
-      "index.ts"
-    ]
+    }
   }
