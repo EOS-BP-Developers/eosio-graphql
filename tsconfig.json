@@ -13,7 +13,10 @@
       /* https://github.com/apollographql/graphql-subscriptions/issues/83 */
       "lib": [
         "es6",
-        "esnext.asynciterable"
+        "esnext.asynciterable",
+        "es2017",
+        "dom",
+        "esnext"
       ]
     }
   }
